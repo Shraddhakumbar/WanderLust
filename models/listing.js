@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const review = require("./review.js");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
@@ -8,17 +9,31 @@ const listingSchema = new Schema({
   },
   description: String,
   image: {
-    filename: String,
-    url: {
-      type: String,
-      default: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1948&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    }
+    url:String,
+    filename:String,
   },
   price: Number,
   location: String,
   country: String,
+  reviews:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"Review",
+    },
+
+  ],
+
+  owner:{
+    type:Schema.Types.ObjectId,
+    ref:"User",
+  },
 });
 
+listingSchema.post("findOneAnddelete",async(listing)=>{
+  if(listing){
+await review.deleteMany({_id:{$in:listing.reviews}});
 
+  }
+});
 const Listing = mongoose.model("Listing",listingSchema);
 module.exports=Listing;
