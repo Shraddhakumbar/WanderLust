@@ -1,6 +1,6 @@
 const express =require("express");
 const router=express.Router();
-const Listing = require("C:/Users/madhu/Downloads/majorproject/models/listing.js");
+const Listing = require("../models/listing.js");
 
 const wrapAsync=require("../utils/wrapAsync.js");
 const ExpressError=require("../utils/ExpressError.js")

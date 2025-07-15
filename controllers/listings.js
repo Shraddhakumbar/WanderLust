@@ -34,11 +34,11 @@ module.exports.showListing= async (req, res) => {
 
  
     module.exports.createListing=async (req,res,next) =>{
-    let response = await geocodingClient.forwardGeocode({
-  query: req.body.listing.location,
-  limit: 1
-})
-  .send();
+//     let response = await geocodingClient.forwardGeocode({
+//   query: req.body.listing.location,
+//   limit: 1
+// })
+//   .send();
     
     let url=req.file.path;
     let filename = req.file.filename;
@@ -52,7 +52,7 @@ module.exports.showListing= async (req, res) => {
      newListing.owner=req.user._id;
      newListing.image={url,filename};
 
-     newListing.geometry=response.body.features[0].geometry;
+    newListing.geometry=response.body.features[0].geometry;
 
      let savedListing=await newListing.save();
      console.log(savedListing);
@@ -106,3 +106,25 @@ module.exports.destroyListing= async (req,res) =>{
 
     res.redirect("/listings");
 }
+
+
+module.exports.searchListings = async (req, res) => {
+  try {
+    const query = req.query.q; // e.g., ?q=goa
+    const regex = new RegExp(query, 'i'); // 'i' = case-insensitive
+
+    const filteredListings = await Listing.find({
+      $or: [
+        { title: regex },
+        { location: regex }
+      ]
+    });
+
+    console.log(filteredListings);
+
+    res.render('listings/index', { allListings: filteredListings }); // 👈 match the name in EJS
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error searching listings");
+  }
+};
