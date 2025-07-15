@@ -26,6 +26,21 @@ WanderLust is a full-stack, Airbnb-inspired travel accommodation platform. It en
 ---
 
 
+## 📂 Project Structure
+
+
+wanderlust/
+├── models/          # Mongoose schemas for users, listings, reviews
+├── routes/          # Express route handlers (auth, listings, reviews)
+├── views/           # EJS templates (dynamic HTML pages)
+├── public/          # Static assets: CSS, JS, images
+├── utils/           # Middleware (e.g., auth checks, error handling)
+├── .env             # API keys & secrets
+└── app.js           # App entry point, Express setup
+
+
+---
+
 ## 🔍 How It Works
 
 * When adding a listing, location input triggers Mapbox geocoding to capture coordinates; images upload to Cloudinary.
@@ -34,10 +49,13 @@ WanderLust is a full-stack, Airbnb-inspired travel accommodation platform. It en
 
 ---
 
-## 📸  Screenshots
+## 📸 (Optional) Screenshots
 
-[image](https://github.com/user-attachments/assets/e8dd0ea1-338e-4d5b-b14b-53462a41d954)
+You can include visuals like:
 
+* Homepage with listings + map
+* Listing creation form
+* A listing’s detail page with reviews
 
 ---
 
