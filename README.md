@@ -26,20 +26,7 @@ WanderLust is a full-stack, Airbnb-inspired travel accommodation platform. It en
 ---
 
 
-## 📂 Project Structure
 
-
-wanderlust/
-├── models/          # Mongoose schemas for users, listings, reviews
-├── routes/          # Express route handlers (auth, listings, reviews)
-├── views/           # EJS templates (dynamic HTML pages)
-├── public/          # Static assets: CSS, JS, images
-├── utils/           # Middleware (e.g., auth checks, error handling)
-├── .env             # API keys & secrets
-└── app.js           # App entry point, Express setup
-
-
----
 
 ## 🔍 How It Works
 
