@@ -36,15 +36,7 @@ WanderLust is a full-stack, Airbnb-inspired travel accommodation platform. It en
 
 ---
 
-## 📸 (Optional) Screenshots
 
-You can include visuals like:
-
-* Homepage with listings + map
-* Listing creation form
-* A listing’s detail page with reviews
-
----
 
 ## 🚀 Future Improvements
 
